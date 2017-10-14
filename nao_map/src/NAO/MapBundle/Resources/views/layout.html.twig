@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Template-NAO</title>
+    <script src="https://use.fontawesome.com/70c9a54198.js"></script>
+    {% block stylesheet %}
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    {% endblock %}
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+            <a class="navbar-brand" href="#">
+                <img src="{{ asset('assets/img/logo-carre_BD.jpg') }}" alt="" class="d-inline-block align-top">
+                Observons
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Observations</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item" href="#">Les observations</a>
+                            <a class="dropdown-item" href="#">Ajouter une observation</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                </ul>
+                <form action="" class="d-md-block d-none">
+                    <div class="text-white mr-4">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </div>
+                </form>
+            </div>
+            <a class="text-white d-md-block d-none" href="#" data-toggle="tooltip" data-placement="left" title="Se connecter">
+                <i class="fa fa-user-o" aria-hidden="true"></i>
+            </a>
+        </nav>
+    </header>
+    <div class="container mt70"> <!-- mt70 => margin-top: 70px; -->
+        <h2>Template-NAO</h2>
+
+        {% block body %}
+
+        {% endblock %}
+    </div>
+    <footer>
+        <div class="container-fluid bg-primary text-white">
+            <div class="container">
+                <p class="text-center">Rejoignez-nous sur les réseaux sociaux</p>
+                <div class="row pt-4 pb-4 justify-content-center">
+                    <span><a href="http://facebook.com"><i class="fa fa-facebook-square fa-2x mr-2" aria-hidden="true"></i></a></span>
+                    <span><a href="http://twitter.com"><i class="fa fa-twitter-square fa-2x mr-2" aria-hidden="true"></i></a></span>
+                    <span><a href="http://plus.google.com"><i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i></a></span>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid bg-nao-blue-darken text-white">
+            <div class="container pt-4 pb-4">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>L'association</h5>
+                        <ul>
+                            <li><a href="#">Qui sommes-nous ?</a></li>
+                            <li><a href="#">Pourquoi ce site ?</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Plan du site</h5>
+                        <div class="row">
+                            <div class="col-6">
+                                <ul>
+                                    <li><a href="#">Ajouter une observation</a></li>
+                                    <li><a href="#">Liste des Observations</a></li>
+                                    <li><a href="#">Blog</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                <ul>
+                                    <li><a href="#">S'inscrire</a></li>
+                                    <li><a href="#">Se connecter</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center">Association Nos Amis les Oiseaux - &copy; Copyright 2017 - <a href="#">mentions légales</a></p>
+            </div>
+        </div>
+    </footer>
+
+    {% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="{{ asset('assets/js/bootstrap/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap/ie10-viewport-bug-workaround.js') }}"></script>
+    <script type="text/javascript">
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+    </script>
+    <script type="text/javascript" src="{{ asset('assets/js/map.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhGJ62DruMeHNUhojbov0mb07ypzyY4As&callback=initMap"
+    async defer>
+    </script>
+
+
+    {% endblock %}
+
+
+
+</body>
+</html>
