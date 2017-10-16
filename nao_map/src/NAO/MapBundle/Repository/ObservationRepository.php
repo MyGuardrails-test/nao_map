@@ -10,4 +10,5 @@ namespace NAO\MapBundle\Repository;
  */
 class ObservationRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }

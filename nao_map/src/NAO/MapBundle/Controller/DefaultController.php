@@ -13,7 +13,30 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('NAOMapBundle:Default:index.html.twig');
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('NAOMapBundle:Observation')
+        ;
+
+        $listObs = $repository->findAll();
+
+        $obsLoc = [];
+        foreach($listObs as $obs) {
+
+          for ($i=0; $i<count($listObs); $i++) {
+            $obsLoc[$i] = [$obs->getTitle(), $obs->getLat(), $obs->getLng()];
+          }
+        }
+
+        $json = json_encode($obsLoc);
+        var_dump($json);
+
+
+
+        return $this->render('NAOMapBundle:Default:index.html.twig', array(
+          'obsLoc' => $json
+        ));
     }
 
     public function addAction(Request $request)

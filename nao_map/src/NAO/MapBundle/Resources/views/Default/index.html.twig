@@ -3,5 +3,35 @@
 {% block body %}
 <div id="map"></div>
 
+{% block javascripts %}
+<script>
+ function initMap(){
+    var locations = JSON.parse('{{ obsLoc | raw }}');
+    console.log(locations);
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 7,
+      center: new google.maps.LatLng(1, 1)
+    });
+    var infowindow = new google.maps.InfoWindow();
+    var marker, i;
 
+    for (i = 0; i < locations.length; i++) {
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            map: map
+        });
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+            infowindow.setContent(locations[i][0]);
+            infowindow.open(map, marker);
+            }
+        })(marker, i));
+    }
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhGJ62DruMeHNUhojbov0mb07ypzyY4As&callback=initMap"
+    async defer>
+    </script>
+
+{% endblock %}
 {% endblock %}
