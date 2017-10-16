@@ -22,15 +22,24 @@ class DefaultController extends Controller
         $listObs = $repository->findAll();
 
         $obsLoc = [];
-        foreach($listObs as $obs) {
+        $size=count($listObs);
 
-          for ($i=0; $i<count($listObs); $i++) {
-            $obsLoc[$i] = [$obs->getTitle(), $obs->getLat(), $obs->getLng()];
-          }
+        for ($i=0 ; $i<$size; $i++) {
+
+
+          $obsLoc[$i] = array(
+              'title' => $listObs[$i]->getTitle(),
+              'lat' => $listObs[$i]->getLat(),
+              'lng' => $listObs[$i]->getLng()
+            );
+
         }
 
+
+
+
         $json = json_encode($obsLoc);
-        var_dump($json);
+
 
 
 
