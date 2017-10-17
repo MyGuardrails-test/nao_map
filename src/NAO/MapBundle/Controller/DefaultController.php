@@ -6,46 +6,30 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use NAO\MapBundle\Entity\Observation;
 use NAO\MapBundle\Form\ObservationType;
+
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 class DefaultController extends Controller
 {
     public function indexAction()
-    {
-        $repository = $this
+    {        
+        return $this->render('NAOMapBundle:Default:index.html.twig'
+        );
+    }
+
+    public function observationsAction() {
+      $repository = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('NAOMapBundle:Observation')
         ;
 
-        $listObs = $repository->findAll();
+        $listObs = $repository->myFindAll();
+        
+        return new JsonResponse($listObs);
 
-        $obsLoc = [];
-        $size=count($listObs);
-
-        for ($i=0 ; $i<$size; $i++) {
-
-
-          $obsLoc[$i] = array(
-              'title' => $listObs[$i]->getTitle(),
-              'lat' => $listObs[$i]->getLat(),
-              'lng' => $listObs[$i]->getLng()
-            );
-
-        }
-
-
-
-
-        $json = json_encode($obsLoc);
-
-
-
-
-        return $this->render('NAOMapBundle:Default:index.html.twig', array(
-          'obsLoc' => $json
-        ));
     }
 
     public function addAction(Request $request)

@@ -6,47 +6,8 @@
 
 {% endblock %}
 {% block javascripts %}
-<script>
- function initMap(){
-    var paris = {
-        lat: 48.85661400000001,
-        lng: 2.3522219000000177
-    }
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 7,
-      center: paris
-    });
 
-    var locations = JSON.parse('{{ obsLoc | raw }}');
-    console.log(locations);
-
-    var infowindow = new google.maps.InfoWindow();
-    var marker, i;
-    var markers = [];
-
-    for (i = 0; i < locations.length; i++) {
-        marker = new google.maps.Marker({
-            position: new google.maps.LatLng(locations[i]['lat'], locations[i]['lng']),
-            map: map
-        });
-        markers.push(marker);
-        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-            infowindow.setContent(locations[i]['title']);
-            infowindow.open(map, marker);
-            }
-        })(marker, i));
-
-        ;
-        markers.push(marker);
-
-    }
-
-    var markerCluster = new MarkerClusterer(map, markers,
-            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
-}
-
-</script>
+<script src="{{ asset('assets/js/map.js') }}"></script>
 <script src="{{ asset('assets/js/markerclusterer.js') }}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhGJ62DruMeHNUhojbov0mb07ypzyY4As&callback=initMap"
     async defer>
