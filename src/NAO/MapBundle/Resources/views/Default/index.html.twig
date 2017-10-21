@@ -1,12 +1,17 @@
 {% extends 'NAOMapBundle::layout.html.twig' %}
 
 {% block body %}
-<div id="map"></div>
+<button id="switch" data-bind='click: displayOptionMap, visible: displayList'>Vue map</button>
+<button data-bind='click: displayOptionList, visible: displayMap'>Vue liste</button>
+
+
+<div id="list" data-bind='visible: displayList'>liste des observations</div>
+<div id="map" data-bind='visible: displayMap'></div>
 
 
 {% endblock %}
 {% block javascripts %}
-
+<script src="{{ asset('assets/js/results.js') }}"></script>
 <script src="{{ asset('assets/js/map.js') }}"></script>
 <script src="{{ asset('assets/js/markerclusterer.js') }}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhGJ62DruMeHNUhojbov0mb07ypzyY4As&callback=initMap"

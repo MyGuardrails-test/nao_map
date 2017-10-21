@@ -7,5 +7,5 @@ nao_map_addpage:
     defaults: { _controller: NAOMapBundle:Default:add }
 
 nao_map_jsonpage:
-    path:    /obsjson
-    defaults: { _controller: NAOMapBundle:Default:observations }
+    path:    /markersjson
+    defaults: { _controller: NAOMapBundle:Default:markers }

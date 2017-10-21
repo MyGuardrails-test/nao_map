@@ -12,8 +12,8 @@ function initMap(){
   var marker, i;
   var markers = [];
   var img = "{{asset('assets/img.green-bird.png') }}"; // icon to use for markers
-
-  $.getJSON("../obsjson", function(data) {
+ 
+  $.getJSON("markersjson", function(data) {
       var loc = JSON.stringify(data);
       console.log(loc);
       var locations = JSON.parse(loc);

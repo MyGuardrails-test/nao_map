@@ -19,14 +19,14 @@ class DefaultController extends Controller
         );
     }
 
-    public function observationsAction() {
+    public function markersAction() {
       $repository = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('NAOMapBundle:Observation')
         ;
 
-        $listObs = $repository->myFindAll();
+        $listObs = $repository->findMarkers();
         
         return new JsonResponse($listObs);
 

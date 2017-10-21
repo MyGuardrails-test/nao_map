@@ -10,7 +10,7 @@ namespace NAO\MapBundle\Repository;
  */
 class ObservationRepository extends \Doctrine\ORM\EntityRepository
 {
-  public function myFindAll() {
+  public function findMarkers() {
 
     $query = $this->_em->createQuery('SELECT o.title, o.lat, o.lng FROM NAOMapBundle:Observation o');
     $results = $query->getArrayResult();
